@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: NginxDockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - flaskapp1
+      - flaskapp2
+      - flaskapp3
+
+  flaskapp1:
+    build:
+      context: ./flaskapp
+      dockerfile: FlaskAppDockerfile
+    volumes:
+      - ./flaskapp/logs:/app/logs
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/mydatabase
+
+  flaskapp2:
+    build:
+      context: ./flaskapp
+      dockerfile: FlaskAppDockerfile
+    volumes:
+      - ./flaskapp/logs:/app/logs
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/mydatabase
+
+  flaskapp3:
+    build:
+      context: ./flaskapp
+      dockerfile: FlaskAppDockerfile
+    volumes:
+      - ./flaskapp/logs:/app/logs
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/mydatabase
+
+  mongodb:
+    build:
+      context: .
+      dockerfile: MongoDBDockerfile
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb/data:/data/db
+      - ./mongodb/logs:/var/log/mongodb
