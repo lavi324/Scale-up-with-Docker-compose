@@ -3,8 +3,8 @@ version: '3'
 services:
   nginx:
     build:
-      context: .
-      dockerfile: NginxDockerfile
+      context: ./Nginx
+      dockerfile: Dockerfile
     ports:
       - "80:80"
     depends_on:
@@ -15,7 +15,7 @@ services:
   flaskapp1:
     build:
       context: ./flaskapp
-      dockerfile: FlaskAppDockerfile
+      dockerfile: Dockerfile
     volumes:
       - ./flaskapp/logs:/app/logs
     environment:
@@ -24,7 +24,7 @@ services:
   flaskapp2:
     build:
       context: ./flaskapp
-      dockerfile: FlaskAppDockerfile
+      dockerfile: Dockerfile
     volumes:
       - ./flaskapp/logs:/app/logs
     environment:
@@ -33,7 +33,7 @@ services:
   flaskapp3:
     build:
       context: ./flaskapp
-      dockerfile: FlaskAppDockerfile
+      dockerfile: Dockerfile
     volumes:
       - ./flaskapp/logs:/app/logs
     environment:
@@ -41,8 +41,8 @@ services:
 
   mongodb:
     build:
-      context: .
-      dockerfile: MongoDBDockerfile
+      context: ./mongodb
+      dockerfile: Dockerfile
     ports:
       - "27017:27017"
     volumes:
