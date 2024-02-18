@@ -1,19 +1,3 @@
-from flask import Flask, request, make_response
-from pymongo import MongoClient
-import datetime
-
-app = Flask(__name__)
-
-# Establish MongoDB connection
-client = MongoClient('mongodb://mongo:27017/')
-db = client['test']
-access_log = db['access_log']
-
-# Global counter
-counter = 0
-
-@app.route('/')
-def index():
 from flask import Flask, request, make_response, render_template
 from pymongo import MongoClient
 import datetime
