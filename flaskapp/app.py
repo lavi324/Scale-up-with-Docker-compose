@@ -14,6 +14,22 @@ counter = 0
 
 @app.route('/')
 def index():
+from flask import Flask, request, make_response, render_template
+from pymongo import MongoClient
+import datetime
+
+app = Flask(__name__)
+
+# Establish MongoDB connection
+client = MongoClient('mongodb://mongo:27017/')
+db = client['test']
+access_log = db['access_log']
+
+# Global counter
+counter = 0
+
+@app.route('/')
+def index():
     global counter
     # Increment the global counter
     counter += 1
@@ -27,7 +43,7 @@ def index():
     access_log.insert_one(log_entry)
 
     # Create a cookie for 5 minutes with the value of the internal IP
-    resp = make_response('Internal IP Address: ' + request.environ.get('HTTP_X_REAL_IP', request.remote_addr))
+    resp = make_response(render_template('index.html', internal_ip=request.environ.get('HTTP_X_REAL_IP', request.remote_addr)))
     resp.set_cookie('internal_ip', request.environ.get('HTTP_X_REAL_IP', request.remote_addr), max_age=300)
     return resp
 
@@ -37,4 +53,4 @@ def show_count():
     return 'Global Counter: ' + str(counter)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host="0.0.0.0", port=5000, debug=True)
