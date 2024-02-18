@@ -6,7 +6,7 @@ COPY . /app
 
 RUN pip install -r requirements.txt
 
-EXPOSE 500
+EXPOSE 5000
 
 ENV FLASK_ENV=production
 
