@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Establish MongoDB connection
 client = MongoClient('mongodb://mongo:27017/')
-db = client['test']
+db = client['mydatabase']
 access_log = db['access_log']
 
 # Global counter
@@ -37,4 +37,4 @@ def show_count():
     return 'Global Counter: ' + str(counter)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=80, debug=True)
