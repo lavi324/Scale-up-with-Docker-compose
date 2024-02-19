@@ -5,7 +5,7 @@ import datetime
 app = Flask(__name__)
 
 # Establish MongoDB connection
-client = MongoClient('mongodb://mongo:27017/')
+client = MongoClient('mongodb://mongodb:27017/')
 db = client['mydatabase']
 access_log = db['access_log']
 
