@@ -1,6 +1,4 @@
-FROM nginx:latest
-
-RUN rm /etc/nginx/conf.d/default.conf
+FROM cuyu/nginx-lb
 
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
