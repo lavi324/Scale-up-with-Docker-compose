@@ -1,6 +1,6 @@
 ***Project Overview***
 
-Scale Up with Docker Compose is a demonstration project that shows how to horizontally scale a web application using Docker Compose. It deploys a simple Python Flask application backed by a MongoDB database, and uses an NGINX reverse proxy to load-balance requests across multiple instances of the Flask app. By leveraging Docker Compose, developers can easily spin up multiple copies of the Flask application container (scaling out the service) to handle increased load, all with a single command. This project illustrates a multi-container setup with service scaling, ideal for learning how to scale applications in a containerized environment.
+The project shows how to scale a web application using Docker Compose. It deploys a simple Python Flask application backed by a MongoDB database and uses an NGINX reverse proxy to load-balance requests across multiple instances of the Flask app. By leveraging Docker Compose, developers can easily spin up multiple copies of the Flask application container (scaling out the service) to handle increased load, all with a single command. This project illustrates a multi-container setup with service scaling, ideal for learning how to scale applications in a containerized environment.
 
 
 
